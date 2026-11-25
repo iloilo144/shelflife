@@ -4,7 +4,7 @@
 warns you before food expires, suggests what to cook with it, and shows how much you
 actually used versus threw away.
 
-> Live demo: [shelflife-brown-three.vercel.app](https://shelflife-brown-three.vercel.app) · Part of [my portfolio](https://portfolio-beta-gilt-2tyi5pjln6.vercel.app)
+> Live demo: [shelflife-brown-three.vercel.app](https://shelflife-brown-three.vercel.app) · Part of [my portfolio](https://ilia-rusia.vercel.app)
 
 ![ShelfLife pantry](docs/screenshot.jpg)
 
