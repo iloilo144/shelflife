@@ -1,0 +1,299 @@
+:root {
+  --bg: #fff6e9;
+  --card: #fffdf8;
+  --ink: #2b1d14;
+  --ink-2: #4d3a2c;
+  --ink-3: #6e5847;
+  --line: #2b1d14;
+  --soft-line: #ecdcc4;
+  --tomato: #d9401f;
+  --tomato-soft: #ffe0d6;
+  --leaf: #2f7a3e;
+  --leaf-soft: #dcf1d6;
+  --butter: #ffcb45;
+  --butter-soft: #fff0c4;
+  --sky-soft: #e1ecff;
+  --lilac-soft: #ebe4ff;
+
+  --display: 'Fraunces', Georgia, serif;
+  --sans: 'DM Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  --wrap: 1180px;
+  --gutter: clamp(1rem, 4vw, 2.5rem);
+  --r: 22px;
+  --r-sm: 14px;
+  /* the "sticker" look: a crisp outline and a hard offset shadow */
+  --edge: 2px solid var(--line);
+  --lift: 0 4px 0 var(--line);
+
+  /* a real spring: overshoots, settles. Used for every bouncy motion in the app */
+  --spring: linear(0, 0.009, 0.035 2.1%, 0.141, 0.281 6.7%, 0.723 12.9%, 0.938 16.7%, 1.017, 1.077, 1.121, 1.149 24.3%, 1.159, 1.163, 1.161, 1.154 29.9%, 1.129 32.8%, 1.051 39.6%, 1.017 43.1%, 0.991, 0.977 51%, 0.974 53.8%, 0.975 57.1%, 0.997 69.8%, 1.003 76.9%, 1.004 83.8%, 1);
+  --spring-time: 0.6s;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 1rem;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--display);
+  font-weight: 700;
+  font-variation-settings: 'SOFT' 100, 'WONK' 1;
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 3px solid var(--tomato);
+  outline-offset: 3px;
+}
+
+.wrap {
+  max-width: var(--wrap);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.skip-link {
+  position: absolute;
+  top: -3rem;
+  left: 1rem;
+  z-index: 100;
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  background: var(--ink);
+  color: #fff;
+}
+
+.skip-link:focus {
+  top: 1rem;
+}
+
+.kicker {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+
+/* Pressable buttons: they sink into their shadow and spring back */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  height: 3rem;
+  padding: 0 1.25rem;
+  border: var(--edge);
+  border-radius: 999px;
+  background: var(--butter);
+  color: var(--ink);
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-decoration: none;
+  box-shadow: var(--lift);
+  transition: transform var(--spring-time) var(--spring), box-shadow var(--spring-time) var(--spring), background 0.2s;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 0 var(--line);
+}
+
+.btn:active {
+  transform: translateY(4px);
+  box-shadow: 0 0 0 var(--line);
+  transition-duration: 0.08s;
+}
+
+.btn--dark {
+  background: var(--ink);
+  color: #fff;
+}
+
+.btn--line {
+  background: var(--card);
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.icon-btn {
+  display: inline-grid;
+  place-items: center;
+  width: 2.4rem;
+  height: 2.4rem;
+  border: 2px solid transparent;
+  border-radius: 12px;
+  background: transparent;
+  color: var(--ink-2);
+  transition: transform 0.4s var(--spring), background 0.2s, border-color 0.2s, color 0.2s;
+}
+
+.icon-btn:hover {
+  background: var(--card);
+  border-color: var(--line);
+  color: var(--ink);
+  transform: rotate(-6deg) scale(1.08);
+}
+
+.icon-btn:active {
+  transform: scale(0.88);
+  transition-duration: 0.08s;
+}
+
+.icon-btn--used:hover {
+  background: var(--leaf-soft);
+  color: var(--leaf);
+}
+
+.icon-btn--waste:hover {
+  background: var(--tomato-soft);
+  color: var(--tomato);
+}
+
+/* Inputs */
+.field {
+  display: grid;
+  gap: 0.4rem;
+}
+
+.field > label,
+.field > span {
+  font-size: 0.88rem;
+  font-weight: 700;
+}
+
+.input {
+  width: 100%;
+  height: 3rem;
+  padding: 0 1rem;
+  border: var(--edge);
+  border-radius: var(--r-sm);
+  background: var(--card);
+  transition: box-shadow 0.25s var(--spring), transform 0.25s;
+}
+
+.input:focus {
+  outline: none;
+  box-shadow: 0 4px 0 var(--butter), 0 4px 0 2px var(--line);
+  transform: translateY(-2px);
+}
+
+.input[aria-invalid='true'] {
+  border-color: var(--tomato);
+  animation: shake 0.4s;
+}
+
+@keyframes shake {
+  20%,
+  60% {
+    transform: translateX(-5px);
+  }
+  40%,
+  80% {
+    transform: translateX(5px);
+  }
+}
+
+.error {
+  font-size: 0.84rem;
+  color: var(--tomato);
+  font-weight: 600;
+}
+
+/* expiry status labels */
+.due {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.84rem;
+  font-weight: 700;
+}
+
+.due--expired {
+  color: var(--tomato);
+}
+
+.due--urgent {
+  color: #b23412;
+}
+
+.due--soon {
+  color: #8a5d00;
+}
+
+.due--fine {
+  color: var(--leaf);
+}
+
+/* the pop-in used across the app */
+.pop {
+  animation: pop var(--spring-time) var(--spring) both;
+  animation-delay: calc(var(--i, 0) * 50ms);
+}
+
+@keyframes pop {
+  from {
+    opacity: 0;
+    transform: scale(0.85) translateY(14px);
+  }
+}
+
+/* Calm mode (data-motion="calm") keeps hovers, fades and colour changes. */

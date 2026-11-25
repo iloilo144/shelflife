@@ -1,0 +1,71 @@
+/* App shell: footer and undo toast */
+main {
+  padding-bottom: 2rem;
+}
+
+.foot {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 5rem;
+  padding-block: 1.5rem 2.5rem;
+  border-top: 2px dashed var(--soft-line);
+  font-size: 0.88rem;
+  color: var(--ink-3);
+}
+
+.toast-region {
+  position: fixed;
+  left: 50%;
+  bottom: 1.5rem;
+  z-index: 60;
+  transform: translateX(-50%);
+}
+
+.toast {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.55rem 0.55rem 0.55rem 1.2rem;
+  border: var(--edge);
+  border-radius: 999px;
+  background: var(--ink);
+  color: #fff;
+  font-weight: 600;
+  box-shadow: 0 4px 0 var(--butter);
+  white-space: nowrap;
+  animation: toast-in 0.7s var(--spring);
+}
+
+.toast button {
+  height: 2.2rem;
+  padding: 0 1rem;
+  border: 2px solid #fff;
+  border-radius: 999px;
+  background: var(--butter);
+  color: var(--ink);
+  font-weight: 800;
+  transition: transform 0.4s var(--spring);
+}
+
+.toast button:hover {
+  transform: rotate(-4deg) scale(1.06);
+}
+
+@keyframes toast-in {
+  from {
+    opacity: 0;
+    transform: translateY(40px) scale(0.8);
+  }
+}
+
+@media (max-width: 760px) {
+  .foot {
+    padding-bottom: 7rem;
+  }
+
+  .toast-region {
+    bottom: 6.5rem;
+  }
+}
